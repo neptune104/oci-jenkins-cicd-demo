@@ -11,11 +11,3 @@ files:
 # be put on the compute instance
 - source: /
   destination: /tmp/integrationTestFolder
-
-steps:
-  # This section is to define the scripts that each step shall run on the instance after file copy.
-  - stepType: Command
-    name: TestRunSingleCommand
-    command: echo ${version}
-    runAs: opc
-    timeoutInSeconds: 300
