@@ -1,6 +1,6 @@
 version: 1.0
 component: deployment
-runAs: root
+runAs: opc
 env:
   variables:
     key1: "value1"
