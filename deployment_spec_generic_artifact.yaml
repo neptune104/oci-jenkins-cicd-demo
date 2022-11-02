@@ -17,5 +17,5 @@ steps:
   - stepType: Command
     name: TestRunSingleCommand
     command: echo ${version}
-    runAs: root
+    runAs: opc
     timeoutInSeconds: 300
