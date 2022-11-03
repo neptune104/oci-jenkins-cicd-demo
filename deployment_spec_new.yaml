@@ -14,9 +14,5 @@ steps:
     runAs: root
     timeoutInSeconds: 300
   # This section is to define the scripts that each step runs on the instance after file copy.
-  - stepType: Command
-    name: Install Apache Web Server
-    command: /genericArtifactDemo/install_dependencies.sh
-    runAs: root
-    timeoutInSeconds: 600
+
     
