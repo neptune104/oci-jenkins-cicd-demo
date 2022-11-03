@@ -1,6 +1,6 @@
 version: 1.0 
 component: deployment 
-runAs: root
+runAs: opc
 env: 
     variables:        
 timeoutInSeconds:  
@@ -11,6 +11,6 @@ steps:
   - stepType: Command 
     name: TestRunSingleCommand
     command: ls
-    runAs: root
+    runAs: opc
     timeoutInSeconds: 300
  
