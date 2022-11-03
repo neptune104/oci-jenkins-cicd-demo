@@ -1,0 +1,10 @@
+version: 1.0
+component: deployment
+
+steps:
+  - type: Command
+    name: List Files
+    shell: shellType
+    timeoutInSeconds: 650
+    failImmediatelyOnError: true
+    command: ls
