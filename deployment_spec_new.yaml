@@ -12,5 +12,5 @@ steps:
     name: TestRunSingleCommand
     command: ls
     runAs: root
-    timeoutInSeconds:
-  - stepType: Command 
+    timeoutInSeconds: 300
+ 
