@@ -6,7 +6,7 @@ env:
 timeoutInSeconds:  
 files:  
   - source: /
-    destination: /tmp/integrationTestFolder                              
+    destination: /home/opc/tmp/integrationTestFolder                              
 steps:                              
   - stepType: Command 
     name: TestRunSingleCommand
