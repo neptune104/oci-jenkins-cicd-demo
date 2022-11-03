@@ -1,16 +1,16 @@
 version: 1.0 
 component: deployment 
-runAs: opc
+runAs: root
 env: 
     variables:        
 timeoutInSeconds:  
 files:  
   - source: /
-    destination: /home/opc/tmp/integrationTestFolder                              
+    destination: /tmp/integrationTestFolder                              
 steps:                              
   - stepType: Command 
     name: TestRunSingleCommand
     command: ls
-    runAs: opc
+    runAs: root
     timeoutInSeconds: 300
  
