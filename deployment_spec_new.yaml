@@ -16,7 +16,7 @@ steps:
   # This section is to define the scripts that each step runs on the instance after file copy.
   - stepType: Command 
     name: Install Dependencies
-    command: install_dependencies.sh
+    command: sudo yum install wget
     runAs: root
     timeoutInSeconds: 300
     
