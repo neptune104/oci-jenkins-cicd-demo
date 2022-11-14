@@ -1,0 +1,51 @@
+import groovy.json.*
+args_map = [version:"1.$BUILD_NUMBER"]
+print "Build number: "+BUILD_NUMBER
+version = BUILD_NUMBER
+print "version: "+version
+
+pipeline {
+  agent any
+  stages {
+    stage('checkout') {
+      steps {
+        echo 'Hello World'
+        checkout([$class:'GitSCM', branches:[[name: '*/main']], extensions:[], userRemoteConfigs:[[url: 'https://github.com/saipriyabalu/jenkins-hello-world.git']]])
+        sh 'echo `pwd`'
+        sh 'ls -alrt'
+      }
+    }
+    stage('build') {
+      steps {
+        sh 'tar -czf artifacts.tar.gz ./*.sh'
+      }
+    }
+    stage("OCI Upload Artifact") {
+        steps {
+          OCIUploadArtifact(credentialsId: 'ocicred',
+          uploadArtifactDetailsList: [[artifactPath: 'artifacts.tar.gz',
+          repositoryId: 'ocid1.artifactrepository.oc1.iad.0.amaaaaaajfd6yyyaufks4r52uxy5sxyjdx77w2glfdw6y3uveembqyqyci6a',
+          repositoryType: 'GENERIC',
+          sourcePath: 'artifacts.tar.gz',
+          version: "1.$BUILD_NUMBER"],
+          [artifactPath: 'deployment_spec.yaml',
+          repositoryId: 'ocid1.artifactrepository.oc1.iad.0.amaaaaaajfd6yyyaufks4r52uxy5sxyjdx77w2glfdw6y3uveembqyqyci6a',
+          repositoryType: 'GENERIC',
+          sourcePath: 'deployment_spec.yaml',
+          version: "1.$BUILD_NUMBER"]
+          ])
+        }
+    }
+    stage('Trigger Deployment') {
+        steps {
+          OCIDeployment(argumentVal: JsonOutput.toJson(args_map),
+          credentialsId: 'ocicred',
+          displayName: "testDeployment${BUILD_NUMBER}",
+          endpoint: 'https://devops.us-ashburn-1.oci.oraclecloud.com/',
+          pipelineId: 'ocid1.devopsdeploypipeline.oc1.iad.amaaaaaajfd6yyyafwhsmnb4gnhqgmgqg6tqk4yi3wwva5uu66uzzo3wcxzq',
+          pollingConfig: [timeoutSeconds: 600, "pollingIntervalSeconds" : 5], executionMode: 'SYNC'
+          )
+      }
+    }  
+  }
+}
