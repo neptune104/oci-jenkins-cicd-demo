@@ -24,12 +24,12 @@ pipeline {
         steps {
           OCIUploadArtifact(credentialsId: 'ocicred',
           uploadArtifactDetailsList: [[artifactPath: 'artifacts.tar.gz',
-          repositoryId: 'ocid1.artifactrepository.oc1.iad.0.amaaaaaajfd6yyyaufks4r52uxy5sxyjdx77w2glfdw6y3uveembqyqyci6a',
+          repositoryId: '',
           repositoryType: 'GENERIC',
           sourcePath: 'artifacts.tar.gz',
           version: "1.$BUILD_NUMBER"],
           [artifactPath: 'deployment_spec.yaml',
-          repositoryId: 'ocid1.artifactrepository.oc1.iad.0.amaaaaaajfd6yyyaufks4r52uxy5sxyjdx77w2glfdw6y3uveembqyqyci6a',
+          repositoryId: '',
           repositoryType: 'GENERIC',
           sourcePath: 'deployment_spec.yaml',
           version: "1.$BUILD_NUMBER"]
@@ -42,7 +42,7 @@ pipeline {
           credentialsId: 'ocicred',
           displayName: "testDeployment${BUILD_NUMBER}",
           endpoint: 'https://devops.us-ashburn-1.oci.oraclecloud.com/',
-          pipelineId: 'ocid1.devopsdeploypipeline.oc1.iad.amaaaaaajfd6yyyafwhsmnb4gnhqgmgqg6tqk4yi3wwva5uu66uzzo3wcxzq',
+          pipelineId: '',
           pollingConfig: [timeoutSeconds: 600, "pollingIntervalSeconds" : 5], executionMode: 'SYNC'
           )
       }
