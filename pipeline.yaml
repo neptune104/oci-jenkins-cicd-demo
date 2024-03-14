@@ -40,7 +40,7 @@ pipeline {
         steps {
           OCIDeployment(argumentVal: JsonOutput.toJson(args_map),
           credentialsId: 'ocicred',
-          displayName: "testDeployment${BUILD_NUMBER}",
+          displayName: "APP-Deployment${BUILD_NUMBER}",
           endpoint: 'https://devops.us-ashburn-1.oci.oraclecloud.com/',
           pipelineId: '',
           pollingConfig: [timeoutSeconds: 600, "pollingIntervalSeconds" : 5], executionMode: 'SYNC'
