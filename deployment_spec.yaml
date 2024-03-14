@@ -7,9 +7,9 @@ timeoutInSeconds:
 files:  
   - source: /
     destination: /tmp/app-deploy                              
-steps:                              
-  - stepType: Command 
-    name: RunCommand
-    command: whoami
-    runAs: opc
-    timeoutInSeconds: 300
+#steps:                              
+#  - stepType: Command 
+#    name: RunCommand
+#    command: whoami
+#    runAs: opc
+#    timeoutInSeconds: 300
