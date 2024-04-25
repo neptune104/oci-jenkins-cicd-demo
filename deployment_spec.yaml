@@ -1,6 +1,6 @@
 version: 1.0 
 component: deployment 
-runAs: root
+runAs: ocarun
 env: 
     variables:        
 timeoutInSeconds:  
