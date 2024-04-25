@@ -6,7 +6,11 @@ env:
 timeoutInSeconds:  
 files:  
   - source: /
-    destination: /tmp/app-deploy                              
+    destination: /tmp/app-deploy
+#steps:
+#  - stepType: Command
+#    name: RunCommand
+#    command: tar xvf /tmp/app-deploy/artifacts.tar.gz -C /tmp/app-front
 #steps:                              
 #  - stepType: Command 
 #    name: RunCommand
